@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import { food_list } from "../assets/assets";
 
-export const StoreContext = createContext(null);
+export const StoreContext = createContext(null);    // creating a context store to manage state globally
 
 const StoreContextProvider = (props) => {
 
