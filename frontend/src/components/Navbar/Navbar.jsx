@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import './Navbar.css'
 import { assets } from '../../assets/assets'
+import { Link } from 'react-router-dom'
+
 
 const Navbar = () => {
 
@@ -13,11 +15,11 @@ const Navbar = () => {
         <img src={assets.logo} alt="" className="logo" />
 
         {/* 2nd component  */}
-        <ul className="navbar-menu">
-            <li onClick={()=>setOption("home")} className={option==="home"?"active":""}>home</li>
-            <li onClick={()=>setOption("menu")} className={option==="menu"?"active":""}>menu</li>
-            <li onClick={()=>setOption("mobile-app")} className={option==="mobile-app"?"active":""}>mobile-app</li>
-            <li onClick={()=>setOption("contact-us")} className={option==="contact-us"?"active":""}>contact us</li>
+        <ul className="navbar-menu" >
+            <Link to="/" onClick={()=>setOption("home")} className={option==="home"?"active":""}>home</Link>
+            <a href='#explore-menu' onClick={()=>setOption("menu")} className={option==="menu"?"active":""}>menu</a>
+            <a href='#app-download' onClick={()=>setOption("mobile-app")} className={option==="mobile-app"?"active":""}>mobile-app</a>
+            <a href='#footer' onClick={()=>setOption("contact-us")} className={option==="contact-us"?"active":""}>contact us</a>
         </ul>
 
          {/* 3rd component  */}
