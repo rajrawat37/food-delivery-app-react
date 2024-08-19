@@ -18,7 +18,7 @@ const addFood = async (req, res) => {
 
       try {
           await food.save();
-          res.json({ success: true, message: "Food Added" });
+          res.json({ success: true, message: "Food Added" , data:food});
       } catch (error) {
           console.log(error);
           res.json({ success: false, message: "Error" });
@@ -38,7 +38,26 @@ const listFood = async(req,res) => {
    }
 }
 
+//remove food items
+
+const removeFood = async(req,res) =>{
+
+  try {
+     const food=await foodModel.findById(req.body.id);
+
+     //to delete it from folder
+     fs.unlink(`uploads/${food.image}`,()=>{});
+     
+     //now delete it from mongodb database
+      await foodModel.findByIdAndDelete(req.body.id);
+      res.json({success:true,message:"Food Removed"});
+
+  } catch (error) {
+      console.log(error);
+      res.json({success:false,message:"error"});
+  }
+}
 
 
 
-export { addFood,listFood };
+export { addFood,listFood,removeFood };
