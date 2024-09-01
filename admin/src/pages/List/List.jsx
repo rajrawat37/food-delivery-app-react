@@ -3,9 +3,9 @@ import './List.css';
 import axios from "axios";
 import { toast } from 'react-toastify';
 
-const List = () => {
+const List = ({url}) => {
 
-    const url = "http://backend-url-from-env ";
+    
     const [list,setList] = useState([]);
 
     const fetchList = async () => {

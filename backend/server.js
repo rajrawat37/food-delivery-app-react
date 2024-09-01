@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors"
 import { connectDB } from "./config/db.js";
 import foodRouter from "./routes/foodRoute.js";
+import userRouter from "./routes/userRoute.js";
+import 'dotenv/config';
 
 
 //app config
@@ -32,7 +34,7 @@ app.use("/api/food",foodRouter)
 // The string "/api/food" is a base path. It means that all routes defined in foodRouter will be prefixed with /api/food.
 app.use("/images",express.static("uploads")); //mounted the uploads folder in the /images endpoint
 //so now i can access any file in that folder
-
+app.use("/api/user",userRouter);
 
 app.get("/", (req,res) => {
     res.send("API Working")

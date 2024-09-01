@@ -5,9 +5,8 @@ import { assets } from '../../assets/assets';
 import axios from "axios";
 import { toast } from 'react-toastify';
 
-const Add = () => {
+const Add = ({url}) => {
 
-    const url = "http://backend-url-from-env "; 
 
     const [image,setImage] = useState(false);
     const [data,setData] = useState({
