@@ -1,8 +1,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { food_list } from "../assets/assets";
 
-export const StoreContext = createContext(null); // creating a context store to manage state globally
+// creating a context
+export const StoreContext = createContext(null); 
 
+//create a provider
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
 
@@ -43,9 +45,15 @@ const StoreContextProvider = (props) => {
   };
   return (
     <StoreContext.Provider value={contextValue}>
-      {props.children}
+      {props.children}          // Represents the child components wrapped by StoreContextProvider.
     </StoreContext.Provider>
   );
 };
+
+
+/** 
+export and wrap the App component with the provider and it can be consumed anywhere in the child component
+using useContext() .
+**/
 
 export default StoreContextProvider;
