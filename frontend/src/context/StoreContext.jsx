@@ -1,12 +1,17 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { food_list } from "../assets/assets";
+import axios from "axios";
+// import { food_list } from "../assets/assets";
 
 // creating a context
-export const StoreContext = createContext(null); 
+export const StoreContext = createContext(null);
 
 //create a provider
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
+  const [token, setToken] = useState("");
+  const [food_list, setFood_list] = useState([]);
+
+  const url = "http://backend-url-from-env /";
 
   const addToCart = (itemId) => {
     if (!cartItems[itemId]) {
@@ -20,9 +25,24 @@ const StoreContextProvider = (props) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
   };
 
+  const fetchFoodList = async () => {
+    const response = await axios.get(url + "api/food/list");
+    setFood_list(response.data.data);
+  };
+
   useEffect(() => {
     console.log(cartItems);
   }, [cartItems]);
+
+  useEffect(() => {
+    async function loadData() {
+      await fetchFoodList();
+      if (localStorage.getItem("token")) {
+        setToken(localStorage.getItem("token"));
+      }
+    }
+    loadData();
+  }, []);
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;
@@ -35,21 +55,32 @@ const StoreContextProvider = (props) => {
     return totalAmount;
   };
 
+  const getTotalCartItems = () => {
+    let totalItems = 0;
+    for (const item in cartItems) totalItems += cartItems[item];
+
+    return totalItems;
+  };
+
   const contextValue = {
     food_list,
     cartItems,
     setCartItems,
     addToCart,
     removeFromCart,
-    getTotalCartAmount
+    getTotalCartAmount,
+    getTotalCartItems,
+    token,
+    setToken,
+    url,
   };
   return (
     <StoreContext.Provider value={contextValue}>
-      {props.children}          // Represents the child components wrapped by StoreContextProvider.
+      {props.children} // Represents the child components wrapped by
+      StoreContextProvider.
     </StoreContext.Provider>
   );
 };
-
 
 /** 
 export and wrap the App component with the provider and it can be consumed anywhere in the child component

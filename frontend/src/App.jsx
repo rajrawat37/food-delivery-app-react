@@ -1,35 +1,39 @@
-import React, { useState } from 'react'
-import Navbar from './components/Navbar/Navbar';
-import { Route,Routes } from 'react-router-dom';
-import Cart from './pages/Cart/Cart';
-import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
-import Footer from './components/Footer/Footer';
-import Home from './pages/Home/Home';
-import LoginPopup from './components/LoginPopup/LoginPopup';
+import React, { useState } from "react";
+import Navbar from "./components/Navbar/Navbar";
+import { Route, Routes } from "react-router-dom";
+import Cart from "./pages/Cart/Cart";
+import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
+import Footer from "./components/Footer/Footer";
+import Home from "./pages/Home/Home";
+import LoginPopup from "./components/LoginPopup/LoginPopup";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const App = () => {
+  const [showLogin, setShowLogin] = useState(false);
 
-  
-  const [showLogin,setShowLogin] = useState(false);
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
 
   return (
     <>
-    {showLogin?<LoginPopup setShowLogin={setShowLogin} />:<></>}
-    
-     <div class='app'>
-        <Navbar setShowLogin={setShowLogin}/>
+      {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
+
+      <div class="app" data-aos="fade-down">
+        <Navbar setShowLogin={setShowLogin} />
 
         <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/cart' element={<Cart/>}/>
-          <Route path='/order' element={<PlaceOrder/>}/>
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/order" element={<PlaceOrder />} />
         </Routes>
-    </div>
+      </div>
 
-     <Footer/>
+      <Footer />
     </>
-   
-  )
-}
+  );
+};
 
 export default App;
