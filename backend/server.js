@@ -5,6 +5,7 @@ import foodRouter from "./routes/foodRoute.js";
 import userRouter from "./routes/userRoute.js";
 import "dotenv/config";
 import cartRouter from "./routes/cartRoute.js";
+import orderRouter from "./routes/orderRoute.js";
 
 //app config
 const app = express(); //creates an instance of an Express application
@@ -34,6 +35,8 @@ app.use("/images", express.static("uploads")); //mounted the uploads folder in t
 app.use("/api/user", userRouter);
 
 app.use("/api/cart", cartRouter);
+
+app.use("/api/order", orderRouter);
 
 app.get("/", (req, res) => {
   res.send("API Working");
