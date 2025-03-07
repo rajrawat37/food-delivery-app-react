@@ -42,7 +42,7 @@ const Footer = () => {
       <hr />
 
       <p className="footer-copyright">
-        Copyright 2024 © QuickEats.com - All Right Reserved{" "}
+        Copyright 2024 © QuickEats.com - All Right Reserved
       </p>
     </div>
   );
