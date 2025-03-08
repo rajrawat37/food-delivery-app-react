@@ -51,6 +51,8 @@ const Add = ({ url }) => {
     formData.append("category", data.category);
     formData.append("image", image);
 
+    console.log(url);
+
     const response = await axios.post(`${url}/api/food/add`, formData);
 
     if (response.data.success) {
@@ -60,7 +62,7 @@ const Add = ({ url }) => {
         price: "",
         category: "Salad",
       });
-      setImage(false);
+      setImage(null);
       toast.success(response.data.message);
     } else {
       toast.error(response.data.message);
