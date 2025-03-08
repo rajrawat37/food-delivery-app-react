@@ -111,8 +111,7 @@ const Navbar = ({ setShowLogin }) => {
       </ul>
 
       {/* 3rd component: Right section */}
-      <div className={`navbar-right ${isScrolled ? "hidden" : ""}`}>
-        <img src={assets.search_icon} alt="" />
+      <div className="navbar-right">
         <div className="navbar-search-icon">
           <Link to="/cart">
             <img src={assets.basket_icon} alt="" />
@@ -123,11 +122,21 @@ const Navbar = ({ setShowLogin }) => {
             <div className="number-dot">0</div>
           )}
         </div>
+
         {!token ? (
-          <button onClick={() => setShowLogin(true)}>Sign In</button>
+          <button
+            onClick={() => setShowLogin(true)}
+            className={isScrolled ? "hidden" : ""}
+          >
+            Sign In
+          </button>
         ) : (
           <div className="navbar-profile">
-            <img src={assets.profile_icon} alt="" />
+            <img
+              src={assets.profile_icon}
+              alt=""
+              className={isScrolled ? "hidden" : ""}
+            />
             <ul className="nav-profile-dropdown">
               <li onClick={() => navigate("/myorders")}>
                 <img src={assets.bag_icon} alt="" />

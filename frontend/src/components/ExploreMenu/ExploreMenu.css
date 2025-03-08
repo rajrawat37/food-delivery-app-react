@@ -7,11 +7,13 @@
 .explore-menu h1 {
   color: #262626;
   font-weight: 500;
+  font-size: max(2vw, 20px);
 }
 
 .explore-menu-text {
-  max-width: 60%;
+  max-width: 100%;
   color: #808080;
+  font-size: max(1.2vw, 14px);
 }
 
 .explore-menu-list {
@@ -20,7 +22,9 @@
   text-align: center;
   gap: 30px;
   margin: 20px 0px;
-  overflow-x: scroll;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 10px;
 }
 
 .explore-menu-list::-webkit-scrollbar {
@@ -34,6 +38,7 @@
   border-radius: 50%;
   transition: 0.2s;
 }
+
 .explore-menu-list-item p {
   margin-top: 10px;
   color: #747474;
@@ -57,5 +62,64 @@
   .explore-menu-text {
     max-width: 100%;
     font-size: 14px;
+  }
+
+  .explore-menu-list {
+    gap: 20px;
+  }
+
+  .explore-menu-list-item img {
+    width: 9vw;
+    min-width: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .explore-menu h1 {
+    font-size: 18px;
+  }
+
+  .explore-menu-text {
+    font-size: 13px;
+  }
+
+  .explore-menu-list {
+    gap: 15px;
+  }
+
+  .explore-menu-list-item img {
+    width: 11vw;
+    min-width: 60px;
+  }
+
+  .explore-menu-list-item p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .explore-menu {
+    gap: 15px;
+  }
+
+  .explore-menu h1 {
+    font-size: 16px;
+  }
+
+  .explore-menu-text {
+    font-size: 12px;
+  }
+
+  .explore-menu-list {
+    gap: 10px;
+  }
+
+  .explore-menu-list-item img {
+    width: 13vw;
+    min-width: 50px;
+  }
+
+  .explore-menu-list-item p {
+    font-size: 12px;
   }
 }

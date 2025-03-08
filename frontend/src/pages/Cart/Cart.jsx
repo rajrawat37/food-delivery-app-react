@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { StoreContext } from "../../context/StoreContext";
 import "./Cart.css";
 import { useNavigate } from "react-router-dom";
@@ -6,42 +6,70 @@ import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const { cartItems, food_list, removeFromCart, getTotalCartAmount, url } =
     useContext(StoreContext);
+
   const navigate = useNavigate();
+
+  const cartIsEmpty = Object.values(cartItems).every((value) => value === 0);
+
+  const [removingItem, setRemovingItem] = useState(null); // Track the removing item
+
+  const handleRemove = (itemId) => {
+    setRemovingItem(itemId); // Trigger animation
+    setTimeout(() => {
+      removeFromCart(itemId); // Remove after animation
+      setRemovingItem(null); // Reset
+    }, 500); // Delay to match animation duration
+  };
 
   return (
     <div className="cart">
-      <div className="cart-items">
-        <div className="cart-items-title">
-          <p>Items</p>
-          <p>Title</p>
-          <p>Price</p>
-          <p>Quantity</p>
-          <p>Total</p>
-          <p>Remove</p>
-        </div>
-        <br />
-        <hr />
+      {!cartIsEmpty ? (
+        <h2>Orders</h2>
+      ) : (
+        <h3 style={{ textAlign: "center" }}>No Orders to display</h3>
+      )}
+      <table className="cart-items">
+        {!cartIsEmpty && (
+          <thead>
+            <tr>
+              <th>Items</th>
+              <th>Title</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+        )}
         {food_list.map((item, index) => {
           if (cartItems[item._id] > 0) {
             return (
-              <div>
-                <div className="cart-items-title cart-items-item">
-                  <img src={url + "images/" + item.image} alt="" />
-                  <p>{item.name}</p>
-                  <p>${item.price}</p>
-                  <p>{cartItems[item._id]}</p>
-                  <p>${item.price * cartItems[item._id]}</p>
-                  <p onClick={() => removeFromCart(item._id)} className="cross">
-                    x
-                  </p>
-                </div>
-                <hr />
-              </div>
+              <tbody>
+                <tr className={removingItem === item._id ? "fade-out" : ""}>
+                  <td>
+                    <img
+                      className="cart-item-image"
+                      src={
+                        !item.isLocal
+                          ? url + "images/" + item.image
+                          : item.image
+                      }
+                      alt=""
+                    />
+                  </td>
+                  <td>{item.name}</td>
+                  <td>${item.price}</td>
+                  <td>{cartItems[item._id]}</td>
+                  <td>${item.price * cartItems[item._id]}</td>
+                  <td onClick={() => handleRemove(item._id)} className="cross">
+                    ❌
+                  </td>
+                </tr>
+              </tbody>
             );
           }
         })}
-      </div>
-
+      </table>
       <div className="cart-bottom">
         <div className="cart-total">
           <h2>Cart Totals</h2>

@@ -55,10 +55,10 @@
   color: #000000;
 }
 
-@media (min-width: 768px) {
-  .navbar-menu-item {
-    padding: 0.75rem 1.25rem;
-    font-size: 1rem;
+/* Hide menu on mobile */
+@media (max-width: 768px) {
+  .navbar-menu {
+    display: none !important; /* Hide the menu */
   }
 }
 
@@ -101,14 +101,15 @@
   position: absolute;
   top: -5px;
   right: -5px;
-  background-color: red;
+  background-color: #07d65d;
   color: white;
   border-radius: 50%;
-  width: 1rem;
-  height: 1rem;
+  width: 1.4rem;
+  height: 1.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 500;
   font-size: 0.55rem;
 }
 
@@ -161,9 +162,14 @@
 
 button {
   padding: 0.5rem 1rem;
-  background-color: #000;
+  background-color: #5ad38c; /* Updated to green */
   color: #fff;
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #4cbc7a; /* Slightly darker green on hover */
 }

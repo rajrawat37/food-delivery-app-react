@@ -120,7 +120,7 @@ export const menu_list = [
   },
 ];
 
-export const food_list = [
+export const foodList = [
   {
     _id: "1",
     name: "Greek salad",

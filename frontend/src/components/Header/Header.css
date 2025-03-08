@@ -138,3 +138,22 @@
   font-size: max(1vw, 13px);
   border-radius: 50px;
 }
+
+.header-contents {
+  max-width: clamp(60%, 50vw, 90%); /* More adaptive max-width */
+  bottom: 8%;
+  left: 5vw;
+}
+
+.header-contents h2 {
+  font-size: clamp(20px, 4.5vw, 32px);
+}
+
+.header-contents p {
+  font-size: clamp(12px, 1.2vw, 16px);
+}
+
+.header-contents button {
+  font-size: clamp(12px, 1.1vw, 14px);
+  padding: clamp(8px, 1vw, 12px) clamp(16px, 2.3vw, 20px);
+}

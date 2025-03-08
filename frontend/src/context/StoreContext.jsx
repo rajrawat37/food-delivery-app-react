@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
-// import { food_list } from "../assets/assets";
+import { assets, foodList } from "../assets/assets";
 
 // creating a context
 export const StoreContext = createContext(null);
@@ -41,7 +41,8 @@ const StoreContextProvider = (props) => {
 
   const fetchFoodList = async () => {
     const response = await axios.get(url + "api/food/list");
-    setFood_list(response.data.data);
+    const food_stored = foodList.map((item) => ({ ...item, isLocal: true }));
+    setFood_list([...response.data.data, ...food_stored]);
   };
 
   const loadCartData = async (token) => {
@@ -103,8 +104,7 @@ const StoreContextProvider = (props) => {
   };
   return (
     <StoreContext.Provider value={contextValue}>
-      {props.children} // Represents the child components wrapped by
-      StoreContextProvider.
+      {props.children}
     </StoreContext.Provider>
   );
 };

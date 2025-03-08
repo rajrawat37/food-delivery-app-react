@@ -2,35 +2,58 @@
   margin-top: 100px;
 }
 
-.cart-items-title {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 0.5fr;
-  align-items: center;
-  color: grey;
-  font-size: max(1vw, 12px);
+.cart-items {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
 }
 
-.cart-items-item {
-  margin: 10px 0px;
-  color: black;
+.cart-items th {
+  background-color: #2ecc71;
+  color: white;
 }
 
-.cart-items-item img {
-  width: 50px;
+.cart-items td:first-child,
+.cart-items th:first-child {
+  width: 80px; /* Adjust as needed */
+  min-width: 80px;
+  max-width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.cart hr {
-  height: 1px;
-  background-color: #e2e2e2;
-  border: none;
+.cart-items th,
+.cart-items td {
+  padding: 12px;
+  border: 1px solid #ddd;
 }
 
-.cart-items-item .cross {
+/* Align first two columns to the left */
+.cart-items td:nth-child(-n + 2),
+.cart-items th:nth-child(-n + 2) {
+  text-align: left;
+}
+
+/* Align last three columns to the center */
+.cart-items td:nth-child(n + 3),
+.cart-items th:nth-child(n + 3) {
+  text-align: center;
+}
+
+.cart-items td:last-child {
+  font-size: 12px;
   cursor: pointer;
-  margin-left: 20px;
 }
 
-.cart-bottom {
+.cart-item-image {
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.cart .cart-bottom {
   margin-top: 80px;
   display: flex;
   justify-content: space-between;
@@ -95,6 +118,23 @@
   border: none;
   color: white;
   border-radius: 4px;
+}
+
+/* Fade-out animation when removing an item */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+}
+
+/* Apply the animation to the row before it's removed */
+.fade-out {
+  animation: fadeOut 0.5s ease forwards;
 }
 
 @media (max-width: 750px) {
