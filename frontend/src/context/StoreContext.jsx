@@ -11,7 +11,7 @@ const StoreContextProvider = (props) => {
   const [token, setToken] = useState("");
   const [food_list, setFood_list] = useState([]);
 
-  const url = "http://backend-url-from-env /";
+  const url = process.env.BACKEND_URL;
 
   const addToCart = async (itemId) => {
     if (!cartItems[itemId]) {
