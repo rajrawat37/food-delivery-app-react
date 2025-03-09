@@ -56,16 +56,20 @@ const registerUser = async (req, res) => {
 
     //hashing user password
 
-    const salt = await bcrypt.genSalt(10);
-    const hashPassword = await bcrypt.hash(password, salt);
+    const salt = await bcrypt.genSalt(10); // Generates a salt with 10 rounds of complexity.
+    const hashPassword = await bcrypt.hash(password, salt); // Hashes the user-provided password with the generated salt.
 
+    // A new user object is created in MongoDB
     const newUser = new userModel({
       name: name,
       email: email,
       password: hashPassword,
     });
 
+    //Saving the User in the Database
     const user = await newUser.save();
+
+    //Generating a JWT Token for Authentication
     const token = createToken(user._id);
     res.json({ success: true, token });
   } catch (error) {
