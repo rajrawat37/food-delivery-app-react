@@ -8,6 +8,7 @@ const LoginPopup = ({ setShowLogin }) => {
   const { url, setToken } = useContext(StoreContext);
 
   const [currState, setCurrState] = useState("Sign Up");
+
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -15,14 +16,14 @@ const LoginPopup = ({ setShowLogin }) => {
   });
 
   const onChangeHandler = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
+    const name = event.target.name; // Gets the name attribute of the input
+    const value = event.target.value; // Gets the input's current value
 
-    setData((data) => ({ ...data, [name]: value }));
+    setData((data) => ({ ...data, [name]: value })); // { name: "Raj" }
   };
 
   const onLogin = async (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Stops the page from refreshing when the form is submitted.
 
     let newUrl = url;
 
@@ -33,6 +34,8 @@ const LoginPopup = ({ setShowLogin }) => {
     }
 
     const response = await axios.post(newUrl, data);
+
+    console.log("Login Response is : ", response);
 
     if (response.data.success) {
       setToken(response.data.token);
@@ -46,6 +49,7 @@ const LoginPopup = ({ setShowLogin }) => {
   return (
     <div className="login-popup">
       <form onSubmit={onLogin} className="login-popup-container">
+        {/* First Row */}
         <div className="login-popup-title">
           <h2>{currState}</h2>
           <img
@@ -54,16 +58,18 @@ const LoginPopup = ({ setShowLogin }) => {
             alt=""
           />
         </div>
+
+        {/* Form Fields */}
         <div className="login-popup-inputs">
           {currState === "Login" ? (
-            <></>
+            <>Hello Login Page</>
           ) : (
             <input
               name="name"
               type="text"
               placeholder="Your Name"
               onChange={onChangeHandler}
-              value={data.name}
+              value={data.name} //Ensures UI updates when state changes
             />
           )}
           <input
@@ -84,6 +90,7 @@ const LoginPopup = ({ setShowLogin }) => {
           />
         </div>
 
+        {/* Submit Button */}
         <button type="submit">
           {currState === "Sign Up" ? "Create account" : "Login"}
         </button>
@@ -92,6 +99,8 @@ const LoginPopup = ({ setShowLogin }) => {
           <input type="checkbox" required />
           <p>By continuing, i agree to the terms of use & privacy policy</p>
         </div>
+
+        {/* Text to toggle */}
         {currState === "Login" ? (
           <p>
             Create a new account?{" "}

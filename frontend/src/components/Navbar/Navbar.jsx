@@ -7,8 +7,13 @@ import { motion } from "framer-motion";
 
 const Navbar = ({ setShowLogin }) => {
   const [option, setOption] = useState("home");
-  const { getTotalCartAmount, getTotalCartItems, token, setToken } =
-    useContext(StoreContext);
+  const {
+    getTotalCartAmount,
+    getTotalCartItems,
+    token,
+    setToken,
+    setCartItems,
+  } = useContext(StoreContext);
   const navigate = useNavigate();
 
   const [position, setPosition] = useState({
@@ -46,6 +51,8 @@ const Navbar = ({ setShowLogin }) => {
 
   const logout = () => {
     localStorage.removeItem("token");
+    // clear the cartData that was being fetched
+    setCartItems([]);
     setToken("");
     navigate("/");
   };

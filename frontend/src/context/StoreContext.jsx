@@ -40,8 +40,12 @@ const StoreContextProvider = (props) => {
   };
 
   const fetchFoodList = async () => {
+    //await ensures that the function waits for the API response before moving forward.
     const response = await axios.get(url + "api/food/list");
+
+    //food_list is an array of obejcts and for each object(item), adding "isLocal:true" property to identify the image later in child component
     const food_stored = foodList.map((item) => ({ ...item, isLocal: true }));
+
     setFood_list([...response.data.data, ...food_stored]);
   };
 
@@ -60,17 +64,19 @@ const StoreContextProvider = (props) => {
   }, [cartItems]);
 
   useEffect(() => {
+    // useEffect cannot directly handle async functions, so an inner async function (loadData) is used.
     async function loadData() {
       await fetchFoodList();
-      if (localStorage.getItem("token")) {
-        setToken(localStorage.getItem("token"));
 
-        //Load cart data from DB whenever page loads
-        await loadCartData(localStorage.getItem("token"));
+      // If a token is stored in localStorage then setToken
+      const token = localStorage.getItem("token");
+      if (token) {
+        setToken(token);
+        await loadCartData(token);
       }
     }
     loadData();
-  }, []);
+  }, [token]);
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;

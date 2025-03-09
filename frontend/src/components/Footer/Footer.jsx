@@ -9,9 +9,9 @@ const Footer = () => {
         <div className="footer-content-left">
           <div class="navbar-logo">QuickEats</div>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Error,
-            ea?Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi,
-            quisquam.
+            Bringing your favorite meals right to your doorstep. Order in just a
+            few clicks and enjoy hassle-free delivery. Because great food should
+            never keep you waiting!"
           </p>
           <div className="footer-social-icons">
             <img src={assets.facebook_icon} alt="" />
