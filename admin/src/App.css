@@ -1,0 +1,17 @@
+.app-content {
+  display: flex;
+  background-color: #f5f7f6;
+  min-height: calc(100vh - 61px); /* Adjust based on navbar height + hr */
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 0;
+}

@@ -1,42 +1,45 @@
-.sidebar{
-    width: 18%;
-    min-height: 100vh;
-    border: 1.5px solid #a9a9a9;     
-    border-top: 0;
-    font-size: max(1vw,10px);
+.sidebar {
+  width: 280px !important; /* Increased from 220px, !important to override potential conflicts */
+  background-color: white;
+  padding: 20px;
+  border-right: 1px solid #e0e0e0;
+  min-width: 280px; /* Ensures it doesn't shrink below this */
 }
 
-.sidebar-options{
-    padding-top: 50px;
-    padding-left: 20%;
-    display:flex;
-    flex-direction: column;
-    gap: 20px;
+.sidebar-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.sidebar-option{
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border: 1px solid #a9a9a9;
-    border-right: 0;
-    padding: 8px 10px;
-    border-radius: 3px 0px 0px 3px;
-    cursor: pointer;
+.sidebar-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  text-decoration: none;
+  color: #333;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
-.sidebar-option{
-    text-decoration: none;
-    color: black;
+.sidebar-option img {
+  width: 24px;
+  height: 24px;
 }
 
-.sidebar-option.active{
-    background-color: #fff0ed;
-    border-color: tomato;
+.sidebar-option p {
+  margin: 0;
+  font-size: 16px;
 }
 
-@media (max-width:900px){
-    .sidebar-option p{
-        display: none;
-    }
+.sidebar-option:hover {
+  background-color: #c3f9d9;
+  color: black;
+}
+
+.sidebar-option.active {
+  background-color: #5ad38c;
+  color: white;
+  box-shadow: 0 2px 5px rgba(90, 211, 140, 0.3);
 }

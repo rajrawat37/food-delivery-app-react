@@ -1,44 +1,106 @@
+/* Main Container */
 .add {
-  width: 70%;
-  margin-left: max(5vw, 25px);
-  margin-top: 50px;
-  color: #6d6d6d;
-  font-size: 16px;
+  display: flex;
+  align-items: flex-start; /* Align to the top */
+  justify-content: flex-start; /* Align to the left */
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #f4f4f4; /* Light grey background */
+  padding: 30px; /* Padding to prevent touching edges */
 }
 
-.add form {
+/* Form Styling */
+form {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
-.add-img-upload img {
-  width: 120px;
+/* Image Upload Section */
+.add-img-upload {
+  text-align: center;
+  padding: 15px;
+  border: 2px dotted #ddd; /* Default light grey border */
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.3s ease-in-out;
 }
 
-.add-product-name,
-.add-product-description {
-  width: max(40%, 280px);
+/* Change border to green on hover */
+.add-img-upload:hover {
+  border-color: #2ecc71; /* Green border on hover */
 }
 
-.add-product-name input,
-.add-product-description textarea {
-  padding: 10px;
+.image-preview-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
 }
 
+.image-preview-container img {
+  max-width: 100%;
+  max-height: 140px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+/* Inputs and Buttons */
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+/* Category and Price Layout */
 .add-category-price {
   display: flex;
-  gap: 30px;
+  justify-content: space-between;
+  width: 100%;
+  gap: 15px;
 }
 
-.add-category-price :is(select, input) {
-  max-width: 120px;
-  padding: 10px;
+.add-category,
+.add-price {
+  flex: 1;
 }
 
+/* Button Styling */
 .add-btn {
-  max-width: 120px;
-  border: none;
-  padding: 10px;
-  background-color: black;
+  background: #2ecc71;
   color: white;
+  font-size: 18px;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.add-btn:hover {
+  background: #27ae60;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .add {
+    padding: 15px;
+  }
+
+  form {
+    padding: 20px;
+  }
 }

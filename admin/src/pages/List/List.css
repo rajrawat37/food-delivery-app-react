@@ -1,31 +1,186 @@
-.list-table-format{
-    display: grid;
-    grid-template-columns: 0.5fr 2fr  1fr 1fr 0.5fr;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 15px;
-    border: 1px solid #cacaca;
-    font-size: 13px;
+.cart {
+  margin-top: 80px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
-.list-table-format.title{
-    background-color: #f9f9f9;
+.cart-items {
+  width: 100%;
+  max-width: 100%; /* Ensures it doesn’t exceed container */
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  table-layout: fixed; /* Forces column widths to stay within limits */
 }
 
-.list-table-format img{
-    width: 50px;
+.cart-items th {
+  background-color: #5ad38c;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-@media (max-width:600px){
-    .list-table-format{
-        grid-template-columns: 1fr 3fr 1fr;
-        gap:  15px;
-    } 
-   .list-table-format.title{
-      display: none;
-   } 
+/* Column widths */
+.cart-items th:nth-child(1),
+.cart-items td:nth-child(1) {
+  width: 10%; /* Image column */
+  min-width: 80px;
+  max-width: 100px;
 }
 
-.cursor{
-    cursor:pointer;
+.cart-items th:nth-child(2),
+.cart-items td:nth-child(2) {
+  width: 35%; /* Name column - wider for text */
+  min-width: 150px;
+}
+
+.cart-items th:nth-child(3),
+.cart-items td:nth-child(3) {
+  width: 25%; /* Category column */
+  min-width: 120px;
+}
+
+.cart-items th:nth-child(4),
+.cart-items td:nth-child(4) {
+  width: 15%; /* Price column */
+  min-width: 80px;
+}
+
+.cart-items th:nth-child(5),
+.cart-items td:nth-child(5) {
+  width: 15%; /* Action column */
+  min-width: 60px;
+}
+
+/* General cell styling */
+.cart-items th,
+.cart-items td {
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Text alignment */
+.cart-items td:nth-child(-n + 2),
+.cart-items th:nth-child(-n + 2) {
+  text-align: left; /* Image and Name */
+}
+
+.cart-items td:nth-child(n + 3),
+.cart-items th:nth-child(n + 3) {
+  text-align: center; /* Category, Price, Action */
+}
+
+/* Action column */
+.cart-items td:last-child {
+  font-size: 12px;
+  cursor: pointer;
+  color: #5ad38c;
+}
+
+/* Allow wrapping for Name column */
+.cart-items td:nth-child(2) {
+  white-space: normal; /* Allows wrapping for longer names */
+  word-wrap: break-word;
+}
+
+/* Row hover effect */
+.cart-items tr:hover {
+  background-color: #f5f7f6;
+  transition: background-color 0.2s ease;
+}
+
+/* Image styling */
+.cart-item-image {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .cart {
+    padding: 0 10px;
+  }
+
+  .cart-items {
+    font-size: 14px;
+    display: block; /* Enables scrolling on small screens */
+    overflow-x: auto; /* Horizontal scroll if needed */
+    white-space: nowrap; /* Prevents wrapping unless specified */
+  }
+
+  .cart-items th,
+  .cart-items td {
+    padding: 8px;
+  }
+
+  .cart-items td:nth-child(1),
+  .cart-items th:nth-child(1) {
+    min-width: 60px;
+    max-width: 80px;
+  }
+
+  .cart-items td:nth-child(2),
+  .cart-items th:nth-child(2) {
+    min-width: 120px;
+  }
+
+  .cart-items td:nth-child(3),
+  .cart-items th:nth-child(3) {
+    min-width: 100px;
+  }
+
+  .cart-items td:nth-child(4),
+  .cart-items th:nth-child(4) {
+    min-width: 60px;
+  }
+
+  .cart-items td:nth-child(5),
+  .cart-items th:nth-child(5) {
+    min-width: 50px;
+  }
+
+  .cart-item-image {
+    width: 35px;
+    height: 35px;
+  }
+
+  .cart-items td:last-child {
+    font-size: 10px;
+  }
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+/* Scrollbar customization */
+.cart-items::-webkit-scrollbar {
+  height: 8px;
+}
+.cart-items::-webkit-scrollbar-thumb {
+  background-color: #5ad38c;
+  border-radius: 4px;
+}
+.cart-items::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
+/* Ensure container respects main-content */
+.list.add.flex-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
 }
