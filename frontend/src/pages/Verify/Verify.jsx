@@ -24,13 +24,14 @@ const Verify = () => {
     console.log("🎁🎁Response is : 🎁", `${url}api/order/verify`);
 
     if (response.data.success) {
-      navigate("/myOrders");
+      navigate("/myorders");
     } else {
       navigate("/");
     }
   };
 
   useEffect(() => {
+    console.log("PAYMENT FUNCDTION : ");
     verifyPayment();
   }, []);
 
