@@ -13,7 +13,7 @@ import List from "./pages/List/List";
 import Orders from "./pages/Orders/Orders";
 
 const App = () => {
-  const url = "http://backend-url-from-env ";
+  const url = import.meta.env.VITE_BACKEND_URL || "http://backend-url-from-env ";
 
   return (
     <div>

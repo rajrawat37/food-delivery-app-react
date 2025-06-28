@@ -9,7 +9,7 @@ import orderRouter from "./routes/orderRoute.js";
 
 //app config
 const app = express(); //creates an instance of an Express application
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 //middleware
 //app.use() is used to add middleware to the Express application.
@@ -45,5 +45,3 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`Server Started on http://localhost:${port}`);
 });
-
-// mongodb+srv://<USERNAME>:<PASSWORD>@<HOST>/? 
