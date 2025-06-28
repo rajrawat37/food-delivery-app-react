@@ -18,7 +18,6 @@ a powerful **admin dashboard**, and **Stripe integration** for mock payments.
 - 📦 Manage food items (CRUD)
 - 📊 View & manage orders
 - 👥 Manage users
-- 🛡️ Role-based route protection
 
 ---
 
