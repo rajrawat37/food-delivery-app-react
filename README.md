@@ -6,22 +6,22 @@ a powerful **admin dashboard**, and **Stripe integration** for mock payments.
 
 ---
 
-## 🚀 Features
+##  Features
 
-### 👨‍🍳 User Side
-- 🍽️ Browse menu & categories
-- 🛒 Add items to cart & place orders
-- 💳 Checkout with Stripe (test mode)
-- 🔐 Register & login securely (JWT)
+### User Side
+-  Browse menu & categories
+-  Add items to cart & place orders
+-  Checkout with Stripe (test mode)
+-  Register & login securely (JWT)
 
-### 🛠️ Admin Panel
-- 📦 Manage food items (CRUD)
-- 📊 View & manage orders
-- 👥 Manage users
+### Admin Panel
+-  Manage food items (CRUD)
+-  View & manage orders
+-  Manage users
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 | Layer       | Tech Used                  |
 |-------------|----------------------------|
@@ -34,9 +34,7 @@ a powerful **admin dashboard**, and **Stripe integration** for mock payments.
 
 ---
 
-## 🖼️ Screenshots
-
-> Add screenshots in the `assets/` folder and embed them below:
+## Screenshots
 
 <img width="1727" alt="image" src="https://github.com/user-attachments/assets/d1e21117-e1c4-41ad-9f7f-f6de0ffc14c8" />
 <img width="1707" alt="image" src="https://github.com/user-attachments/assets/82ccd884-e6a7-41f0-9857-82ae4f9dd953" />
@@ -46,14 +44,4 @@ a powerful **admin dashboard**, and **Stripe integration** for mock payments.
 <img width="1724" alt="image" src="https://github.com/user-attachments/assets/67cc8153-c6d2-4d26-ad91-95d0dfff03c3" />
 <img width="1705" alt="image" src="https://github.com/user-attachments/assets/12d8ede3-4e28-4cef-af7d-88b65a987be4" />
 
-
-
 ---
-
-## 🧪 Run Locally
-
-### 1️⃣ Clone the repo
-
-```bash
-git clone https://github.com/your-username/quickeat.git
-cd quickeat
